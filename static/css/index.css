@@ -150,15 +150,41 @@ section.banner {
     cursor: pointer;
 }
 .results-carousel .card {
-    margin: 20px;
+    margin: 1px;
     overflow: hidden;
 }
 
 .column .card {
-    height: 100%;
+  width: 100%;
 }
 .video {
   height: 100%;     /* 高度自动，保持视频的宽高比 */
 }
 
+#custom-column {
+  width: 365px;  /* 让这个 column 变宽 */
+  max-width: 80%; /* 但不超过 80% 屏幕宽度 */
+}
 
+/* .card-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+} */
+
+.card-content {
+  max-height: none; /* 允许内容自然扩展 */
+  height: auto;
+  overflow-y: visible; /* 让内容正常显示 */
+  text-align: center;
+  padding:0.5rem;
+}
+
+#custom-card-content {
+  max-height: 80px; /* 限制最大高度 */
+  overflow-y: auto; /* 显示滚动条 */
+  text-align: center;
+  padding: 1rem;
+  display: block; /* 确保 div 按块级元素自然扩展 */
+}

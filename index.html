@@ -9,7 +9,7 @@
     <meta property="og:title"
         content="WISA: World Simulator Assistant for Physics-Aware Text-to-Video Generation" />
     <!-- <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" /> -->
-    <meta property="og:url" content="https://relactrl.github.io/RelaCtrl/" />
+    <meta property="og:url" content="https://wisav1.github.io/WISA/" />
     <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
     <!-- 
     <meta property="og:image" content="static/images/banner.png" />
@@ -69,11 +69,7 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            The Diffusion Transformer plays a pivotal role in advancing text-to-image and text-to-video generation, owing primarily to its inherent scalability. However, existing controlled diffusion transformer methods incur significant parameter and computational overheads and suffer from inefficient resource allocation due to their failure to account for the varying relevance of control information across different transformer layers.
-                            To address this, we propose the Relevance-Guided Efficient Controllable Generation framework, <strong>RelaCtrl</strong>, enabling efficient and resource-optimized integration of control signals into the Diffusion Transformer.
-                            First, we evaluate the relevance of each layer in the Diffusion Transformer to the control information by assessing the "removal influence"—i.e., the impact of skipping each control layer on both the quality of generation and the control effectiveness during inference.
-			    Based on the strength of the relevance, we then tailor the positioning, parameter scale, and modeling capacity of the control layers to reduce unnecessary parameters and redundant computations. Additionally, to further improve efficiency, we replace the self-attention and MLP in the commonly used copy block with the carefully designed Two-Dimensional Shuffle Mixer (<strong>TDSM</strong>), enabling efficient implementation of both the token mixer and channel mixer.
-			    Both qualitative and quantitative experimental results demonstrate that our approach achieves superior performance with only 15% of the parameters and computational complexity compared to PixArt-<em>δ</em>.
+                            Recent rapid advancements in text-to-video (T2V) generation, such as SoRA and Kling, have shown great potential for building world simulators. However, current T2V models struggle to grasp abstract physical principles and generate videos that adhere to physical laws. This challenge arises primarily from a lack of clear guidance on physical information due to a significant gap between abstract physical principles and generation models. To this end, we introduce the <strong>W</strong>orld <strong>S</strong>imulator <strong>A</strong>ssistant (<strong>WISA</strong>), an effective framework for decomposing and incorporating physical principles into T2V models. Specifically, WISA decomposes physical principles into textual physical descriptions, qualitative physical categories, and quantitative physical properties. To effectively embed these physical attributes into the generation process, WISA incorporates several key designs, including Mixture-of-Physical-Experts Attention (<strong>MoPA</strong>) and a Physical Classifier, enhancing the model's physics awareness. Furthermore, most existing datasets feature videos where physical phenomena are either weakly represented or entangled with multiple co-occurring processes, limiting their suitability as dedicated resources for learning explicit physical principles. We propose a novel video dataset, <strong>WISA-32K</strong>, collected based on qualitative physical categories. It consists of <strong>32,000</strong> videos, representing 17 physical laws across three domains of physics: <i>Dynamics</i>, <i>Thermodynamics</i>, and <i>Optics</i>. Experimental results demonstrate that WISA can effectively enhance the compatibility of T2V models with real-world physical laws, achieving a considerable improvement on the VideoPhy benchmark.
 			</p>
                     </div>
                 </div>
@@ -81,1135 +77,1332 @@
         </div>
     </section>
 
-        <!-- Image carousel -->
-        <section class="hero is-small">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="columns is-centered has-text-centered">
-                    <h2 class="title is-3">Some Visualizations of RelaCtrl</h2>
-                    </div>
-                    <div id="results-carousel" class="carousel results-carousel">
-			<div class="card">
-                            <div class="card-image">
-                                <img src="static/images/carousel/paint_0.png" alt="paint_0" />
-                            </div>
-                            <div class="card-content has-text-centered">(paint style) A woman with flowing dark hair and red lips.</div>
-                        </div>
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="static/images/carousel/paint_1.png" alt="paint_1" />
-                            </div>
-                            <div class="card-content has-text-centered">(paint style) A man in a black suit, white T-shirt, and black tie, eyes blazing.</div>
-                        </div>
-			<div class="card">
-                            <div class="card-image">
-                                <img src="static/images/carousel/real_0.png" alt="real_0" />
-                            </div>
-                            <div class="card-content has-text-centered">(realistic style) A lone tree with sprawling roots anchors a sweeping desert vista under a gradient sunset sky.</div>
-                        </div>
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="static/images/carousel/real_1.png" alt="real_1" />
-                            </div>
-                            <div class="card-content has-text-centered">(realistic style) A young woman with blonde hair and a denim jacket is sitting in an interior space.</div>
-                        </div>
-			<div class="card">
-                            <div class="card-image">
-                                <img src="static/images/carousel/oil_0.png" alt="oil_0" />
-                            </div>
-                            <div class="card-content has-text-centered">(oil style) A stern-faced man with a beard, wearing a white shirt and brown jacket.</div>
-                        </div>
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="static/images/carousel/oil_1.png" alt="oil_1" />
-                            </div>
-                            <div class="card-content has-text-centered">(oil style) A red-haired woman wearing a brown jacket and green scarf stands in front of a decorated Christmas tree.</div>
-                        </div>
-			<div class="card">
-                            <div class="card-image">
-                                <img src="static/images/carousel/gufeng_0.png" alt="gufeng_0" />
-                            </div>
-                            <div class="card-content has-text-centered">(gufeng style) A contemplative young girl in a traditional garment stands amidst a futuristic cityscape.</div>
-                        </div>
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="static/images/carousel/gufeng_1.png" alt="gufeng_1" />
-                            </div>
-                            <div class="card-content has-text-centered">(gufeng style) Watercolor painting of a mountain village at sunset.</div>
-                        </div>
-			<div class="card">
-                            <div class="card-image">
-                                <img src="static/images/carousel/pixel_0.png" alt="pixel_0" />
-                            </div>
-                            <div class="card-content has-text-centered">(pixel style) At sunset, a traditional Chinese pagoda and a modern skyscraper coexist by the river.  A gondola with two silhouetted figures drifts on the calm water under an orange sky.</div>
-                        </div>
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="static/images/carousel/pixel_1.png" alt="pixel_1" />
-                            </div>
-                            <div class="card-content has-text-centered">(pixel style) Pixelated mountains, a river winding through lush greenery under a sky scattered with clouds.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End image carousel -->
-    <section class="hero is-small">
-        <div class="hero-body">
-            
-            <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered">
-                <h2 class="title is-3">Method</h2></div>
-                <img src="static/images/method_arch.png" alt="method" />
-                <p>The overall architecture of RelaCtrl. Control block locations are prioritized based on the ControlNet Relevance Score, ranked from highest to lowest. The direct duplication of the main branch in the original ControlNet is replaced with the carefully designed Reference-Guided Lightweight control block. Additionally, the Two-Dimensional Shuffle Mixer effectively reduces model parameters and computational overhead while preserving performance. 
-                </p>
-                
-            </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="hero is-small">
-        <div class="hero-body">
-            
-            <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered">
-                <h2 class="title is-3">Results of Varying Conditions</h2></div>
-                <img src="static/images/exp_visual.png" alt="efficiency" />
-            </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="hero is-small">
-        <div class="hero-body">
-
-            <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered">
-                <h2 class="title is-3">Compared with SOTA Methods</h2></div>
-                <img src="static/images/exp_compare.png" alt="efficiency" />
-            </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="hero is-small">
-        <div class="hero-body">
-
-            <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered">
-                <h2 class="title is-3">Quantitative Result Compared with SOTA Methods</h2></div>
-                <img src="static/images/quantities.png" alt="method" />
-            </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="hero is-small">
-        <div class="hero-body">
-
-            <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered">
-                <h2 class="title is-3">Efficiency Compared with SOTA Methods</h2></div>
-                <img src="static/images/efficiency.png" alt="method" />
-            </div>
-            </div>
-        </div>
-    </section>
 
     <section class="hero is-small">
         <div class="hero-body">
             <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> More Visualizations of RelaCtrl</h2></div>
-
-                <div class="columns is-centered has-text-centered"><h2 class="title is-4"> Canny to Realistic</h2></div>
-		<div class="columns is-centered has-text-centered">
-                    <div class="column">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> More Visual Comparison</h2></div>
+                <hr class="my-4">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-6" style="font-style: italic; font-weight: normal;"> An apple falls into a vat of cider, sending up a spray </h2></div>
+		        <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter" id="custom-column">
                         <div id="t2i-sample1" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/canny_1.png" />
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                         <div class="card">
                             <div class="card-image js-modal-trigger" data-target="t2i-sample1">
-                                <img loading="lazy" src="static/images/realistics/canny_1.png" alt="sample7" />
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
-                            <div class="card-content">The woman in the image is smiling warmly, wearing a fur-lined coat, with voluminous, curly hair.</div>
+                            <div class="card-content">Cosmos</div>
                         </div>
                     </div>
 
-                    <div class="column">
-                        <div id="t2i-sample2" class="modal">
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/canny_gen_1.png" />
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                         <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample2">
-                                <img loading="lazy" src="static/images/realistics/canny_gen_1.png" alt="sample7" />
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cogvideox_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
+                            <div class="card-content">CogVideoX</div>
                         </div>
                     </div>
 
-		    <div class="column">
-                        <div id="t2i-sample3" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/canny_2.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/comparison/phyt2v_2.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample3">
-                                <img loading="lazy" src="static/images/realistics/canny_2.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A solitary, leafless tree stands in a vast desert with a glowing sunset behind it, casting long shadows.</div>
-                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
                     </div>
-
-                    <div class="column">
-                        <div id="t2i-sample4" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/canny_gen_2.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/comparison/phyt2v_2.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample4">
-                                <img loading="lazy" src="static/images/realistics/canny_gen_2.png" alt="sample7" />
-                            </div>
-                        </div>
+                        <div class="card-content">PhyT2V</div>
                     </div>
-
                 </div>
 
-		<div class="columns is-centered has-text-centered">
-                    <div class="column">
-                        <div id="t2i-sample5" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/canny_3.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample5">
-                                <img loading="lazy" src="static/images/realistics/canny_3.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A festive scene with decorated cupcakes and gingerbread houses, set against a warm, cozy Christmas tree background.</div>
-                        </div>
-                    </div>
 
-                    <div class="column">
-                        <div id="t2i-sample6" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/canny_gen_3.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/comparison/wisa_2.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample6">
-                                <img loading="lazy" src="static/images/realistics/canny_gen_3.png" alt="sample7" />
-                            </div>
-                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
                     </div>
-
-		    <div class="column">
-                        <div id="t2i-sample7" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/canny_4.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/comparison/wisa_2.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample7">
-                                <img loading="lazy" src="static/images/realistics/canny_4.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A bright, modern dining room with a wooden table, elegant chairs, a bouquet of flowers, and large windows.</div>
-                        </div>
+                        <div class="card-content">WISA</div>
                     </div>
-
-                    <div class="column">
-                        <div id="t2i-sample8" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/canny_gen_4.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample8">
-                                <img loading="lazy" src="static/images/realistics/canny_gen_4.png" alt="sample7" />
-                            </div>
-                        </div>
-                    </div>
-
+                </div>
                 </div>
 
-		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Depth to Realistic</h2></div>
-		<div class="columns is-centered has-text-centered">
-		    <div class="column">
-			<div id="t2i-sample9" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/depth_4.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="t2i-sample9">
-				<img loading="lazy" src="static/images/realistics/depth_4.png" alt="sample7" />
-			    </div>
-			    <div class="card-content">A cozy dining area with a table set for two, featuring a bouquet of red flowers and lush plants by large windows.</div>
-			</div>
-		    </div>
-
-		    <div class="column">
-			<div id="t2i-sample10" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/depth_gen_4.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="t2i-sample10">
-				<img loading="lazy" src="static/images/realistics/depth_gen_4.png" alt="sample7" />
-			    </div>
-			</div>
-		    </div>
-
-		    <div class="column">
-                        <div id="t2i-sample11" class="modal">
+                <hr class="my-4">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-6" style="font-style: italic; font-weight: normal;"> The rope supports a wooden swing </h2></div>
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter" id="custom-column">
+                        <div id="t2i-sample1" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/depth_5.png" />
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_3.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                         <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample11">
-                                <img loading="lazy" src="static/images/realistics/depth_5.png" alt="sample7" />
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_3.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
-			    <div class="card-content">A young woman with short, platinum blonde hair and a casual expression, wearing a denim jacket in soft lighting.</div>
+                            <div class="card-content">Cosmos</div>
                         </div>
                     </div>
 
-		    <div class="column">
-                        <div id="t2i-sample12" class="modal">
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/depth_gen_5.png" />
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_3.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                         <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample12">
-                                <img loading="lazy" src="static/images/realistics/depth_gen_5.png" alt="sample7" />
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cogvideox_3.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
+                            <div class="card-content">CogVideoX</div>
                         </div>
                     </div>
-		</div>
 
-		<div class="columns is-centered has-text-centered">
-		    <div class="column">
-                        <div id="t2i-sample13" class="modal">
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/comparison/phyt2v_3.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/comparison/phyt2v_3.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">PhyT2V</div>
+                    </div>
+                </div>
+
+
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/comparison/wisa_3.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/comparison/wisa_3.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">WISA</div>
+                    </div>
+                </div>
+                </div>
+
+                <hr class="my-4">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-6" style="font-style: italic; font-weight: normal;"> Coin spins rapidly on a wooden table </h2></div>
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter" id="custom-column">
+                        <div id="t2i-sample1" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/depth_6.png" />
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_4.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                         <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample13">
-                                <img loading="lazy" src="static/images/realistics/depth_6.png" alt="sample7" />
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_4.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
-                            <div class="card-content">A close-up of a man with a strong beard, intense eyes, and slightly tousled dark hair, exuding confidence.</div>
+                            <div class="card-content">Cosmos</div>
                         </div>
                     </div>
 
-		    <div class="column">
-                        <div id="t2i-sample14" class="modal">
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/depth_gen_6.png" />
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_4.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                         <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample14">
-                                <img loading="lazy" src="static/images/realistics/depth_gen_6.png" alt="sample7" />
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cogvideox_4.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
+                            <div class="card-content">CogVideoX</div>
                         </div>
                     </div>
 
-		    <div class="column">
-                        <div id="t2i-sample15" class="modal">
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/comparison/phyt2v_4.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/comparison/phyt2v_4.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">PhyT2V</div>
+                    </div>
+                </div>
+
+
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/comparison/wisa_4.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/comparison/wisa_4.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">Cosmos</div>
+                    </div>
+                </div>
+                </div>
+
+                <hr class="my-4">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-6" style="font-style: italic; font-weight: normal;"> Pouring milk into still tea </h2></div>
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter" id="custom-column">
+                        <div id="t2i-sample1" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/depth_7.png" />
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_5.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                         <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample15">
-                                <img loading="lazy" src="static/images/realistics/depth_7.png" alt="sample7" />
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_5.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
-                            <div class="card-content">A couple stands hand in hand, facing the sun in a serene, golden-hued landscape, surrounded by trees and nature.</div>
+                            <div class="card-content">Cosmos</div>
                         </div>
                     </div>
 
-		    <div class="column">
-                        <div id="t2i-sample16" class="modal">
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
-                                <img loading="lazy" src="static/images/realistics/depth_gen_7.png" />
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_5.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                         <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="t2i-sample16">
-                                <img loading="lazy" src="static/images/realistics/depth_gen_7.png" alt="sample7" />
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cogvideox_5.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
+                            <div class="card-content">CogVideoX</div>
                         </div>
                     </div>
-		</div>
 
-		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Hed to Realistic</h2></div>
-		<div class="columns is-centered has-text-centered">
-		    <div class="column">
-			<div id="t2i-sample17" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/hed_7.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="t2i-sample17">
-				<img loading="lazy" src="static/images/realistics/hed_7.png" alt="sample7" />
-			    </div>
-			    <div class="card-content">A couple walks down a sunlit dirt path, surrounded by lush trees, bathed in the warm glow of the setting sun.</div>
-			</div>
-		    </div>
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/comparison/phyt2v_5.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/comparison/phyt2v_5.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">PhyT2V</div>
+                    </div>
+                </div>
 
-		    <div class="column">
-			<div id="t2i-sample18" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/hed_gen_7.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="t2i-sample18">
-				<img loading="lazy" src="static/images/realistics/hed_gen_7.png" alt="sample7" />
-			    </div>
-			</div>
-		    </div>
 
-		    <div class="column">
-			<div id="hed_8" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/hed_8.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="hed_8">
-				<img loading="lazy" src="static/images/realistics/hed_8.png" alt="sample7" />
-			    </div>
-			    <div class="card-content">A happy golden retriever stands in a grassy field, panting with a joyful expression, surrounded by lush greenery.</div>
-			</div>
-		    </div>
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/comparison/wisa_5.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/comparison/wisa_5.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">Cosmos</div>
+                    </div>
+                </div>
+                </div>
 
-		    <div class="column">
-			<div id="hed_gen_8" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/hed_gen_8.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="hed_gen_8">
-				<img loading="lazy" src="static/images/realistics/hed_gen_8.png" alt="sample7" />
-			    </div>
-			</div>
-		    </div>
-		</div>
+                <hr class="my-4">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-6" style="font-style: italic; font-weight: normal;"> The eraser rubs against the paper, removing pencil marks </h2></div>
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter" id="custom-column">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_1.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_1.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Cosmos</div>
+                        </div>
+                    </div>
 
-		<div class="columns is-centered has-text-centered">
-		    <div class="column">
-			<div id="hed_9" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/hed_9.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="hed_9">
-				<img loading="lazy" src="static/images/realistics/hed_9.png" alt="sample7" />
-			    </div>
-			    <div class="card-content">A majestic snow-capped mountain range under dramatic skies, with sharp peaks and deep valleys, showcasing winter's grandeur.</div>
-			</div>
-		    </div>
 
-		    <div class="column">
-			<div id="hed_gen_9" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/hed_gen_9.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="hed_gen_9">
-				<img loading="lazy" src="static/images/realistics/hed_gen_9.png" alt="sample7" />
-			    </div>
-			</div>
-		    </div>
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_1.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cogvideox_1.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">CogVideoX</div>
+                        </div>
+                    </div>
 
-		    <div class="column">
-			<div id="hed_10" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/hed_10.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="hed_10">
-				<img loading="lazy" src="static/images/realistics/hed_10.png" alt="sample7" />
-			    </div>
-			    <div class="card-content">A bride smiles radiantly, adorned with a floral crown of white roses and a veil, exuding joy on her special day.</div>
-			</div>
-		    </div>
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/comparison/phyt2v_1.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/comparison/phyt2v_1.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">PhyT2V</div>
+                    </div>
+                </div>
 
-		    <div class="column">
-			<div id="hed_gen_10" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/hed_gen_10.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="hed_gen_10">
-				<img loading="lazy" src="static/images/realistics/hed_gen_10.png" alt="sample7" />
-			    </div>
-			</div>
-		    </div>
-		</div>
 
-		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Seg to Realistic</h2></div>
-		<div class="columns is-centered has-text-centered">
-		    <div class="column">
-			<div id="seg_9" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/seg_9.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="seg_9">
-				<img loading="lazy" src="static/images/realistics/seg_9.png" alt="sample7" />
-			    </div>
-			    <div class="card-content">This is the same image of a snow-capped mountain range under dramatic skies, with sharp peaks and deep valleys.</div>
-			</div>
-		    </div>
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/comparison/wisa_1.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/comparison/wisa_1.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">WISA</div>
+                    </div>
+                </div>
+                </div>
+    </section>
 
-		    <div class="column">
-			<div id="seg_gen_9" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/seg_gen_9.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="seg_gen_9">
-				<img loading="lazy" src="static/images/realistics/seg_gen_9.png" alt="sample7" />
-			    </div>
-			</div>
-		    </div>
+    <hr class="my-2">
 
-		    <div class="column">
-			<div id="seg_10" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/seg_10.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="seg_10">
-				<img loading="lazy" src="static/images/realistics/seg_10.png" alt="sample7" />
-			    </div>
-			    <div class="card-content">This is the same beautiful image of a bride with a floral crown, smiling joyfully on her wedding day.</div>
-			</div>
-		    </div>
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> More Samples generated by WISA</h2></div>
+                <!-- <hr class="my-4"> -->
+                <!-- <div class="columns is-centered has-text-centered"><h2 class="title is-6" style="font-style: italic; font-weight: normal;"> The eraser rubs against the paper, removing pencil marks </h2></div> -->
+		        <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content">An antique clock's pendulum hangs inside its ornate wooden casing, with the camera focusing on its rhythmic motion. The metal rod remains straight as it swings, and the spherical bob at its end shines with a polished gleam, reflecting faint images of the wood grain within the clock. The pendulum moves with a steady frequency, producing a soft 'tick-tock' sound at each turn, harmonizing with the faint hum of the clock's internal gears. Throughout the motion, the amplitude gradually diminishes, but the central balance point stays constant. Shadows inside the wooden case shift gently with the pendulum's rhythm, enhancing the serene atmosphere of the scene. The background remains static, directing all attention to the pendulum's graceful and consistent movement, showcasing the stability of rigid body motion.</div>
+                        </div>
+                    </div>
 
-		    <div class="column">
-			<div id="seg_gen_10" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/seg_gen_10.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="seg_gen_10">
-				<img loading="lazy" src="static/images/realistics/seg_gen_10.png" alt="sample7" />
-			    </div>
-			</div>
-		    </div>
-		</div>
-		
-		<div class="columns is-centered has-text-centered">
-		    <div class="column">
-			<div id="seg_11" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/seg_11.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="seg_11">
-				<img loading="lazy" src="static/images/realistics/seg_11.png" alt="sample7" />
-			    </div>
-			    <div class="card-content">A man in a formal uniform, with medals on his chest, gazes thoughtfully to the side in a black-and-white portrait.</div>
-			</div>
-		    </div>
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_1.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_1.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content">On a cold winter day, the outside temperature is frigid while the indoors remain cozy and warm. The inside surface of the window, chilled by the outdoor air, causes water vapor in the room to condense into a fine mist on the glass. Over time, the tiny droplets coalesce into larger liquid beads. These droplets slowly trickle down the glass, leaving clear trails behind. Occasionally, some droplets merge and slide down in a sudden motion. The view outside appears slightly blurred through the condensation, adding a serene and uniquely wintry atmosphere to the scene.</div>
+                        </div>
+                    </div>
 
-		    <div class="column">
-			<div id="seg_gen_11" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/seg_gen_11.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="seg_gen_11">
-				<img loading="lazy" src="static/images/realistics/seg_gen_11.png" alt="sample7" />
-			    </div>
-			</div>
-		    </div>
 
-		    <div class="column">
-			<div id="seg_12" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/seg_12.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="seg_12">
-				<img loading="lazy" src="static/images/realistics/seg_12.png" alt="sample7" />
-			    </div>
-			    <div class="card-content">A hiker stands atop a rocky outcrop, gazing at a vast, misty mountain landscape below, with a winding path visible.</div>
-			</div>
-		    </div>
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_3.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_3.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content">On a sunny afternoon, a small soap bubble floats gently in the air. The surface of the bubble, due to the structure of the thin film, causes light to interfere, creating beautiful rainbow patterns. As the bubble rotates and changes angle, the interference effect of the light shifts, with golden, blue, green, and purple light spots blending together, like a dynamic painting. The surface of the bubble reflects the surrounding light, and the delicate film of the soap bubble creates a soft halo in the sunlight.</div>
+                        </div>
+                    </div>
 
-		    <div class="column">
-			<div id="seg_gen_12" class="modal">
-			    <div class="modal-background"></div>
-			    <div class="modal-content">
-				<img loading="lazy" src="static/images/realistics/seg_gen_12.png" />
-			    </div>
-			    <button class="modal-close is-large" aria-label="close"></button>
-			</div>
-			<div class="card">
-			    <div class="card-image js-modal-trigger" data-target="seg_gen_12">
-				<img loading="lazy" src="static/images/realistics/seg_gen_12.png" alt="sample7" />
-			    </div>
-			</div>
-		    </div>
-		</div>
+                    
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_4.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_4.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content">a solitary lantern swings gently in the night, casting flickering shadows on the cobblestone. its warm glow disrupts the cool darkness around, creating dancing shapes that morph and twist, dissolving against the stillness of the empty street. the motion of the lantern defines the rhythm of the light. </div>
+                        </div>
+                    </div>
+                </div>
 
-            </div>
-        </div>
+		        <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_5.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_5.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content">a vibrant red rubber ball bounces steadily on a smooth, sunlit sidewalk. each impact compresses the rubber, then releases, sending it soaring back into the air. the rhythm of its rise and fall showcases the perfect elasticity, each rebound a testament to the energy exchanged with the concrete.</div>
+                        </div>
+                    </div>
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_6.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_6.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content">a bright green rubber band stretches as fingers pull it taut, revealing its thin, glossy surface. tiny creases form along its length, it demonstrates the elasticity of materials through clear deformation. </div>
+                        </div>
+                    </div>
+
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_7.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_7.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content">a single firecracker bursts in mid-air, releasing a brilliant flash of light and a shockwave that radiates outward. fragments of colored paper scatter wildly, spiraling away like confetti, while the roar of the explosion resonates, momentarily punctuating the calm night with vibrant chaos.</div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_8.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_8.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content">a solitary ice cube rests on a warm granite countertop. sunlight streams through the window, illuminating its glossy surface. slowly, drops of water form and trickle down the sides, pooling beneath, as the cube shrinks and contorts, surrendering to the heat around it. </div>
+                        </div>
+                    </div>
+                </div>
+
+		        <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_9.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_9.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content">a lone pot of water simmers on a hot stove. tiny bubbles form at the bottom, dance upwards, and burst at the surface. steam curls gracefully into the air, shimmering as it dissipates, blurring the edge of reality, revealing the dynamic transformation from liquid to gas.</div>
+                        </div>
+                    </div>
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_10.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_10.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content">a solitary red balloon floats silently against a still pond. its vibrant surface mirrors the sky's blue and soft clouds, creating a perfect reflection. as a gentle breeze stirs, the balloon sways slightly, causing ripples that distort its mirrored image, blending reality with illusion.</div>
+                        </div>
+                    </div>
+
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_11.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_11.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content">a solitary glass marble rolls across a polished wooden table. as it glides, sunlight filters through a nearby window, casting a bright halo around it. the marble's surface perfectly reflects the warm glow and the faint outlines of the room, creating a captivating interplay of light and shape. </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_13.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/sample/index_13.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content" id="custom-card-content"> a series of raindrops trickles from the edge of the leaf, suspended momentarily before breaking free. as it plummets, it elongates, stretching into a delicate teardrop shape. upon hitting the puddle below, it splashes outward, ripples radiating in concentric circles, dancing across the water's surface.</div>
+                        </div>
+                    </div>
+                </div>
     </section>
 
     <section class="hero is-small">
         <div class="hero-body">
             <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> RelaCtrl with Different Community Models</h2></div>
-	    	<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Canny to Paint</h2></div>
+                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> WISA-32K</h2></div>
+                <hr class="my-4">
                 <div class="columns is-centered has-text-centered">
-                    <div class="column">
-                        <div id="style_canny_2" class="modal">
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/canny_2.png" />
+                                <video loading="lazy" src="static/videos/dataset/Collision.mp4" controls autoplay loop muted alt="sample1">
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                         <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_canny_2">
-                                <img loading="lazy" src="static/images/styles/canny_2.png" alt="sample7" />
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                <video loading="lazy" src="static/videos/dataset/Collision.mp4" controls autoplay loop muted alt="sample1">
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
-                            <div class="card-content">A woman dressed in a colorful kimono with floral patterns stands gracefully, surrounded by painted lotus flowers in soft watercolors.</div>
+                            <div class="card-content">Collision</div>
                         </div>
                     </div>
 
-                    <div class="column">
-                        <div id="style_canny_paint_2" class="modal">
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/canny_paint_2.png" />
+                                
+                                <video loading="lazy" src="static/videos/dataset/Rigid_Body_Motion.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                         <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_canny_paint_2">
-                                <img loading="lazy" src="static/images/styles/canny_paint_2.png" alt="sample7" />
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Rigid_Body_Motion.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
+                            <div class="card-content">Rigid Body Motion</div>
                         </div>
                     </div>
 
-		    <div class="column">
-                        <div id="style_canny_3" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/canny_3.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/dataset/Elastic_Motion.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_canny_3">
-                                <img loading="lazy" src="static/images/styles/canny_3.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A woman with striking green eyes, wearing a red scarf, stands against a soft watercolor background with vibrant red splashes.</div>
-                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
                     </div>
-
-                    <div class="column">
-                        <div id="style_canny_paint_3" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/canny_paint_3.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/dataset/Elastic_Motion.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_canny_paint_3">
-                                <img loading="lazy" src="static/images/styles/canny_paint_3.png" alt="sample7" />
-                            </div>
-                        </div>
+                        <div class="card-content">Elastic Motion</div>
                     </div>
+                </div>
 
-		    <div class="column">
-                        <div id="style_canny_5" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/canny_5.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
+
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/dataset/Liquid_Motion.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_canny_5">
-                                <img loading="lazy" src="static/images/styles/canny_5.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A solitary figure walks through a city street at sunset, with warm light reflecting off the wet pavement and tall buildings.</div>
-                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
                     </div>
-
-                    <div class="column">
-                        <div id="style_canny_paint_5" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/canny_paint_5.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/dataset/Liquid_Motion.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_canny_paint_5">
-                                <img loading="lazy" src="static/images/styles/canny_paint_5.png" alt="sample7" />
-                            </div>
-                        </div>
+                        <div class="card-content">Liquid Motion</div>
                     </div>
+                </div>
+                </div>
 
-		</div>
-		
-		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Depth to Oil</h2></div>
-		<div class="columns is-centered has-text-centered">
-                    <div class="column">
-                        <div id="style_depth_1" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/depth_1.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_depth_1">
-                                <img loading="lazy" src="static/images/styles/depth_1.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A rugged man with a thick beard and intense expression, dressed in a brown coat, painted in bold, dramatic oil strokes.</div>
-                        </div>
-                    </div>
-
-		    <div class="column">
-                        <div id="style_depth_oil_1" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/depth_oil_1.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_depth_oil_1">
-                                <img loading="lazy" src="static/images/styles/depth_oil_1.png" alt="sample7" />
-                            </div>
-                        </div>
-                    </div>
-
-		    <div class="column">
-                        <div id="style_depth_3" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/depth_3.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_depth_3">
-                                <img loading="lazy" src="static/images/styles/depth_3.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A woman with dramatic makeup and red face paint, featuring a star motif on her forehead, set against an intense, dark oil painting background.</div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div id="style_depth_oil_3" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/depth_oil_3.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_depth_oil_3">
-                                <img loading="lazy" src="static/images/styles/depth_oil_3.png" alt="sample7" />
-                            </div>
-                        </div>
-                    </div>
-
-		    <div class="column">
-                        <div id="style_depth_6" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/depth_6.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_depth_6">
-                                <img loading="lazy" src="static/images/styles/depth_6.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A woman with platinum blonde hair and striking blue eyes gazes intensely at the viewer, her features highlighted in an oil painting style.</div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div id="style_depth_oil_6" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/depth_oil_6.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_depth_oil_6">
-                                <img loading="lazy" src="static/images/styles/depth_oil_6.png" alt="sample7" />
-                            </div>
-                        </div>
-                    </div>
-
-		</div>
-
-		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Hed to Gufeng</h2></div>
-		<div class="columns is-centered has-text-centered">
-		    <div class="column">
-                        <div id="style_hed_2" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/hed_2.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_hed_2">
-                                <img loading="lazy" src="static/images/styles/hed_2.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A serene watercolor painting of a lush landscape, featuring multiple cascading waterfalls surrounded by vibrant green foliage and trees.</div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div id="style_hed_gufeng_2" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/hed_gufeng_2.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_hed_gufeng_2">
-                                <img loading="lazy" src="static/images/styles/hed_gufeng_2.png" alt="sample7" />
-                            </div>
-                        </div>
-                    </div>
-
-		    <div class="column">
-                        <div id="style_hed_4" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/hed_4.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_hed_4">
-                                <img loading="lazy" src="static/images/styles/hed_4.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A watercolor scene depicting a bustling waterfront with traditional boats and a city skyline featuring a prominent clock tower in the distance.</div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div id="style_hed_gufeng_4" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/hed_gufeng_4.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_hed_gufeng_4">
-                                <img loading="lazy" src="static/images/styles/hed_gufeng_4.png" alt="sample7" />
-                            </div>
-                        </div>
-                    </div>
-
-		    <div class="column">
-                        <div id="style_hed_7" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/hed_7.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_hed_7">
-                                <img loading="lazy" src="static/images/styles/hed_7.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A watercolor painting of a woman wearing a long coat, standing near a window, with soft tones and a serene expression.</div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div id="style_hed_gufeng_7" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/hed_gufeng_7.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_hed_gufeng_7">
-                                <img loading="lazy" src="static/images/styles/hed_gufeng_7.png" alt="sample7" />
-                            </div>
-                        </div>
-                    </div>
-		</div>
-
-		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Seg to Pixel</h2></div>
-		<div class="columns is-centered has-text-centered">
-		    <div class="column">
-                        <div id="style_seg_0" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/seg_0.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_seg_0">
-                                <img loading="lazy" src="static/images/styles/seg_0.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A pixelated depiction of a scenic town with castles, a bridge, and boats on a river, creating a nostalgic, retro vibe.</div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div id="style_seg_pixel_0" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/seg_pixel_0.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_seg_pixel_0">
-                                <img loading="lazy" src="static/images/styles/seg_pixel_0.png" alt="sample7" />
-                            </div>
-                        </div>
-                    </div>
-
-		    <div class="column">
-                        <div id="style_seg_1" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/seg_1.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_seg_1">
-                                <img loading="lazy" src="static/images/styles/seg_1.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A pixelated view of a grand palace with golden domes, reflecting in the water, surrounded by lush greenery and flying birds.</div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div id="style_seg_pixel_1" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/seg_pixel_1.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_seg_pixel_1">
-                                <img loading="lazy" src="static/images/styles/seg_pixel_1.png" alt="sample7" />
-                            </div>
-                        </div>
-                    </div>
-
-		    <div class="column">
-                        <div id="style_seg_2" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/seg_2.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_seg_2">
-                                <img loading="lazy" src="static/images/styles/seg_2.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">A pixelated winter scene featuring a church surrounded by snow-covered trees, with towering mountains in the background.</div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div id="style_seg_pixel_2" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/styles/seg_pixel_2.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="style_seg_pixel_2">
-                                <img loading="lazy" src="static/images/styles/seg_pixel_2.png" alt="sample7" />
-                            </div>
-                        </div>
-                    </div>
-		</div>
-	    </div>
-        </div>
-    </section>
-
-
-    <!-- <section class="hero is-small">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> More cases of the Qihoo-T2MV</h2></div>
                 <div class="columns is-centered has-text-centered">
-                    
-                    <div class="column">
-                        <div id="multivideo-sample1" class="modal">
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
                             <div class="modal-background"></div>
                             <div class="modal-content">
-                                <img loading="lazy" src="static/images/qihoo-t2mv/coming.png" />
+                                
+                                <video loading="lazy" src="static/videos/dataset/Gas_Motion.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <button class="modal-close is-large" aria-label="close"></button>
                         </div>
                         <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="multivideo-sample1">
-                                <img loading="lazy" src="static/images/qihoo-t2mv/coming.png" alt="sample1">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Gas_Motion.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
+                            <div class="card-content">Gas Motion</div>
+                        </div>
+                    </div>
+
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Deformation.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Deformation.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Deformation</div>
+                        </div>
+                    </div>
+
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/dataset/deformation_2.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/dataset/deformation_2.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">Deformation</div>
+                    </div>
+                </div>
+
+
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/dataset/melting.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/dataset/melting.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">Melting</div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Solidification.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Solidification.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Solidification</div>
+                        </div>
+                    </div>
+
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Vaporization.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Vaporization.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Vaporization</div>
+                        </div>
+                    </div>
+
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/dataset/Liquefaction.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/dataset/Liquefaction.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">Liquefaction</div>
+                    </div>
+                </div>
+
+
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/dataset/Explosion.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/dataset/Explosion.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">Explosion</div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Combustion.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Combustion.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Combustion</div>
+                        </div>
+                    </div>
+
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Combustion_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Combustion_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Combustion</div>
+                        </div>
+                    </div>
+
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/dataset/reflection.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/dataset/reflection.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">Reflection</div>
+                    </div>
+                </div>
+
+
+                <div class="column is-one-quarter">
+                    <div id="t2i-sample1" class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            
+                            <video loading="lazy" src="static/videos/dataset/refraction.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <button class="modal-close is-large" aria-label="close"></button>
+                    </div>
+                    <div class="card">
+                        <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                            
+                            <video loading="lazy" src="static/videos/dataset/refraction.mp4" controls autoplay loop muted alt="sample1">
+                                
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="card-content">Refraction</div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Elastic_Motion_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Elastic_Motion_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Elastic_Motion</div>
+                        </div>
+                    </div>
+
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/dataset/scattering.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/dataset/scattering.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Scattering</div>
+                        </div>
+                    </div>
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/dataset/interference_and_diffraction.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/dataset/interference_and_diffraction.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Interference and Diffraction</div>
+                        </div>
+                    </div>
+
+                    <div class="column is-one-quarter">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Unnatural_Light_Sources.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/dataset/Unnatural_Light_Sources.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Unnatural Light Sources</div>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="columns is-centered has-text-centered">
-                    <div class="column">
-                        <div id="modal-sample7" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/qihoo-t2i/7.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="modal-sample7">
-                                <img loading="lazy" src="static/images/qihoo-t2i/7.png" alt="sample7" />
-                            </div>
-                            <div class="card-content">knolling of a drawing tools for painter</div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div id="modal-sample8" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/qihoo-t2i/8.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="modal-sample8">
-                                <img loading="lazy" src="static/images/qihoo-t2i/8.png" alt="sample8">
-                            </div>
-                            <div class="card-content">Van Gogh painting of a teacup on the desk</div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div id="modal-sample8" class="modal">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <img loading="lazy" src="static/images/qihoo-t2i/8.png" />
-                            </div>
-                            <button class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        <div class="card">
-                            <div class="card-image js-modal-trigger" data-target="modal-sample8">
-                                <img loading="lazy" src="static/images/qihoo-t2i/8.png" alt="sample8">
-                            </div>
-                            <div class="card-content">Van Gogh painting of a teacup on the desk</div>
-                        </div>
-                    </div>
-                </div> -->
+    </section>
 
-            </div>
-        </div>
-    </section> -->
 
     <footer class="footer">
         <div class="container">
@@ -1227,11 +1420,6 @@
         </div>
     </footer>
 
-    <!-- Statcounter tracking code -->
-
-    <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
 
 </body>
 
