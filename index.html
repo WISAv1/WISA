@@ -69,7 +69,7 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Recent rapid advancements in text-to-video (T2V) generation, such as SoRA and Kling, have shown great potential for building world simulators. However, current T2V models struggle to grasp abstract physical principles and generate videos that adhere to physical laws. This challenge arises primarily from a lack of clear guidance on physical information due to a significant gap between abstract physical principles and generation models. To this end, we introduce the <strong>W</strong>orld <strong>S</strong>imulator <strong>A</strong>ssistant (<strong>WISA</strong>), an effective framework for decomposing and incorporating physical principles into T2V models. Specifically, WISA decomposes physical principles into textual physical descriptions, qualitative physical categories, and quantitative physical properties. To effectively embed these physical attributes into the generation process, WISA incorporates several key designs, including Mixture-of-Physical-Experts Attention (<strong>MoPA</strong>) and a Physical Classifier, enhancing the model's physics awareness. Furthermore, most existing datasets feature videos where physical phenomena are either weakly represented or entangled with multiple co-occurring processes, limiting their suitability as dedicated resources for learning explicit physical principles. We propose a novel video dataset, <strong>WISA-32K</strong>, collected based on qualitative physical categories. It consists of <strong>32,000</strong> videos, representing 17 physical laws across three domains of physics: <i>Dynamics</i>, <i>Thermodynamics</i>, and <i>Optics</i>. Experimental results demonstrate that WISA can effectively enhance the compatibility of T2V models with real-world physical laws, achieving a considerable improvement on the VideoPhy benchmark.
+                            Recent advances in text-to-video (T2V) generation, exemplified by models such as SoRA and Kling, have demonstrated strong potential for constructing world simulators. However, existing T2V models still struggle to understand abstract physical principles and to generate videos that faithfully obey physical laws. This limitation stems primarily from the lack of explicit physical guidance, caused by a significant gap between high-level physical concepts and the generative capabilities of current models. To address this challenge, we propose the <strong>W</strong>orld <strong>S</strong>imulator <strong>A</strong>ssistant (<strong>WISA</strong>), a novel framework designed to systematically decompose and integrate physical principles into T2V models. Specifically, WISA decomposes physical knowledge into three hierarchical levels: textual physical descriptions, qualitative physical categories, and quantitative physical properties. It then incorporates several carefully designed modules—such as Mixture-of-Physical-Experts Attention (MoPA) and a Physical Classifier—to effectively encode these attributes and enhance the model’s adherence to physical laws during generation. In addition, most existing video datasets feature only weak or implicit representations of physical phenomena, limiting their utility for learning explicit physical principles. To bridge this gap, we present <strong>WISA-80K</strong>, a new dataset comprising 80,000 human-curated videos that depict 17 fundamental physical laws across three core domains of physics: dynamics, thermodynamics, and optics. Experimental results show that WISA substantially improves the alignment of T2V models (such as CogVideoX and Wan2.1) with real-world physical laws, achieving notable gains on the VideoPhy benchmark. Our data, code, and models will be open source.
 			</p>
                     </div>
                 </div>
@@ -383,7 +383,7 @@
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                        <div class="card-content">Cosmos</div>
+                        <div class="card-content">WISA</div>
                     </div>
                 </div>
                 </div>
@@ -485,7 +485,7 @@
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                        <div class="card-content">Cosmos</div>
+                        <div class="card-content">WISA</div>
                     </div>
                 </div>
                 </div>
@@ -592,6 +592,175 @@
                 </div>
                 </div>
     </section>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> More Visual Comparison on Wan2.1</h2></div>
+                <hr class="my-4">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-6" style="font-style: italic; font-weight: normal;"> As a heavy object presses down slowly, the surface first releases a faint dust. With increasing pressure, the cracks spread, and the soil splits into uneven fragments. The fragments' surfaces display irregular patterns, while fine powder disperses into the surrounding air, creating a thin veil of dust.  </h2></div>
+		        <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter" id="custom-column">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/wan_1.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Wan2.1</div>
+                        </div>
+                    </div>
+
+                    <div class="column is-one-quarter" id="custom-column">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/wisa_wan_1.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">WISA</div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <hr class="my-4">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-6" style="font-style: italic; font-weight: normal;"> A bowl of clear water sits in the center of a freezer. As the temperature gradually drops, tiny ice crystals begin to form on the surface, resembling a thin layer of frost. The crystals spread rapidly, connecting to create a delicate solid ice film. Over time, the film thickens and eventually covers the entire surface, while the water beneath slowly freezes. </h2></div>
+		        <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter" id="custom-column">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/wan_3.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Wan2.1</div>
+                        </div>
+                    </div>
+
+                    <div class="column is-one-quarter" id="custom-column">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/wisa_wan_3.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">WISA</div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <hr class="my-4">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-6" style="font-style: italic; font-weight: normal;"> The camera focuses on a toothpaste tube on the bathroom countertop. As a finger gently applies pressure to one end of the tube, a steady stream of toothpaste begins to emerge from the opening. </h2></div>
+		        <div class="columns is-centered has-text-centered">
+                    <div class="column is-one-quarter" id="custom-column">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/wan_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">Wan2.1</div>
+                        </div>
+                    </div>
+
+                    <div class="column is-one-quarter" id="custom-column">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                
+                                <video loading="lazy" src="static/videos/comparison/cosmos_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                
+                                <video loading="lazy" src="static/videos/comparison/wisa_wan_2.mp4" controls autoplay loop muted alt="sample1">
+                                    
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="card-content">WISA</div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+    </section>
+
 
     <hr class="my-2">
 
@@ -905,7 +1074,7 @@
     <section class="hero is-small">
         <div class="hero-body">
             <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> WISA-32K</h2></div>
+                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> WISA-80K</h2></div>
                 <hr class="my-4">
                 <div class="columns is-centered has-text-centered">
                     <div class="column is-one-quarter">
